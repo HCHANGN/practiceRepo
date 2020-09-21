@@ -2,6 +2,9 @@ import React from "react";
 import Accordion from "./components/Accordion";
 import Counter from "./components/Counter";
 import Search from "./components/Search";
+import YoutubeForm from "./components/YoutubeForm";
+import ApolloForm from "./components/ApolloForm";
+import "./App.css";
 
 const items = [
     {
@@ -20,10 +23,12 @@ const items = [
 
 export default ()=>{
     return (
-        <div>
+        <div className="App">
             {/* <Accordion items={items}/>
-            <Counter /> */}
+            <Counter />
             <Search/>
+            <YoutubeForm/> */}
+            <ApolloForm/>
         </div>
     );
 }

@@ -1,0 +1,85 @@
+body{
+    margin:0;
+}
+
+button{
+    width:100%;
+    margin-bottom: 20px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.5;
+}
+
+#mainFormDiv{
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding-right:25px;
+    padding-left: 25px;
+    width:360px;
+}
+#deviceCodeForm{
+    width:100%;
+    margin-bottom: 20px;
+}
+
+#deviceCode{
+    margin-top: 5px;
+}
+
+#addressForm{
+    width:100%;
+}
+
+#address{
+    box-sizing: border-box;
+    width:100%;
+    height:70px;
+    margin-top: 5px;
+}
+#submitBtn{
+    margin-top: 50px;
+    border:0;
+    background-color:#008bcd;
+    color:white;
+}
+
+#cancelBtn{
+    border:1px solid gray;
+    color:gray;
+}
+.topBG{
+    width: 100%;
+    height:129px;
+    background-color:#008bcd;
+    display:flex;
+    justify-content: center;
+}
+
+.topBG img{
+    width:390px;
+}
+.topBG div{
+    width:390px;
+    background-image: url("./image/mask.svg");
+}
+.topBG div div{
+    position: relative;
+    top:68px;
+    left:180px;
+    color:white;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.86px;
+}
+
+.formLabel{
+    color:gray;
+}
