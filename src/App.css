@@ -1,12 +1,17 @@
+*{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
 body{
     margin:0;
 }
 
 button{
+    font-size: 20px;
     width:100%;
     margin-bottom: 20px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -14,44 +19,102 @@ button:hover{
     opacity: 0.5;
 }
 
+textarea{
+    border: solid 1px #cccccc;
+    color: #333333;
+}
+
+textarea:focus{
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 0 #26abe3;
+    border: solid 1px #26abe3;
+}
+
 #mainFormDiv{
     margin:auto;
     margin-top: 50px;
     margin-bottom: 100px;
-    padding-right:25px;
-    padding-left: 25px;
     width:360px;
 }
 #deviceCodeForm{
-    width:100%;
+    width: 310px;
+    margin-left: 25px;
+    margin-right: 25px;
     margin-bottom: 20px;
 }
 
 #deviceCode{
     margin-top: 5px;
+    color: #333333;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
 }
 
 #addressForm{
-    width:100%;
+    width: 310px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 #address{
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
     box-sizing: border-box;
-    width:100%;
-    height:70px;
+    line-height: 29px;
+    width:310px;
+    height:41px;
     margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    resize: none;
+    overflow: hidden;
+    border-radius: 3px;
 }
+
+/* #address:focus{
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 0 #26abe3;
+    border: solid 1px #26abe3;
+} */
+
 #submitBtn{
     margin-top: 50px;
     border:0;
-    background-color:#008bcd;
+    background-color:#26abe3;
     color:white;
 }
 
 #cancelBtn{
-    border:1px solid gray;
-    color:gray;
+    border: solid 1px #999999;
+    color:#999999;
+    background-color: white;
 }
+
+.withError{
+    border-radius: 2px;
+    border: solid 1px #ff3b30;
+    background-color: #ffffff;
+}
+
+.withError:focus{
+    border-radius: 2px;
+    border: solid 1px #ff3b30;
+    box-shadow: none;
+    background-color: #ffffff;
+}
+
+.error{
+    color:#ff3b30;
+    font-size: 14px;
+    line-height: 1.57;
+}
+
 .topBG{
     width: 100%;
     height:129px;
@@ -60,17 +123,13 @@ button:hover{
     justify-content: center;
 }
 
-.topBG img{
-    width:390px;
-}
-.topBG div{
-    width:390px;
+#BGImg{
+    width:360px;
     background-image: url("./image/mask.svg");
 }
-.topBG div div{
-    position: relative;
-    top:68px;
-    left:180px;
+#BGText{
+    margin-top:68px;
+    margin-left:180px;
     color:white;
     font-size: 24px;
     font-weight: 500;
@@ -81,5 +140,7 @@ button:hover{
 }
 
 .formLabel{
-    color:gray;
+    font-size: 17px;
+    font-weight: 500;
+    color: #999999;
 }

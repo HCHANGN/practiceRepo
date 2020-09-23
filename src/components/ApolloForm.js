@@ -1,5 +1,5 @@
-import React from "react";
-import {Formik, Form, Field, ErrorMessage} from "formik";
+import React, { useEffect, useRef } from "react";
+import {Formik, Form, Field, useField} from "formik";
 import * as Yup from "yup";
 
 const initialValues ={
@@ -10,16 +10,31 @@ const validationSchema = Yup.object({
     address: Yup.string().required("Required!")
 })
 
-const onSubmit = (values)=>{
+const onSubmit = (values,{resetForm})=>{
     alert("你的地點在: "+ values.address);
+    resetForm({address:""});
 }
 
+const setAutoHeight = (e)=>{
+    e.target.style.minHeight="auto";
+    e.target.style.minHeight = `${e.target.scrollHeight}px`;
+}
+
+
+
 const ApolloForm = ()=>{
+
+    const textAreaRef = useRef("null");
+
+    useEffect(()=>{
+        console.log(textAreaRef);
+    },[])
+
     return (
         <div>
             <div className="topBG">
-                <div>
-                    <div>打卡機管理</div>
+                <div id="BGImg">
+                    <div id="BGText">打卡機管理</div>
                 </div>
             </div>
             <div id="mainFormDiv">
@@ -36,13 +51,29 @@ const ApolloForm = ()=>{
                     >
                         <Form>
                             <Field 
-                                type="text"
-                                id="address"
                                 name="address"
-                            />
-                            <ErrorMessage name="address"></ErrorMessage>
+                            >
+                                {
+                                    (props)=>{
+                                        const {field, form, meta} = props;
+                                        return(
+                                            <div>
+                                                {
+                                                    form.submitCount && meta.error ? 
+                                                    <textarea ref={textAreaRef} id="address" className="withError" {...field} onInput={setAutoHeight}></textarea> 
+                                                    :<textarea ref={textAreaRef} id="address" className="noError" {...field} onInput={setAutoHeight}></textarea>
+                                                }
+                                                {/* <textarea id="address" {...field} onInput={setAutoHeight}></textarea> */}
+                                                {form.submitCount && meta.error ? <div className="error">{meta.error}</div>:null}
+                                            </div>
+                                            
+                                        )
+                                    }
+                                }
+                            </Field>
+                            {/* <ErrorMessage name="address" component={TextError}></ErrorMessage> */}
                             <button type="submit" id="submitBtn">確定</button>
-                            <button id="cancelBtn">取消</button>
+                            <button type="reset" id="cancelBtn">取消</button>
                         </Form>
                     </Formik>
                 </div>

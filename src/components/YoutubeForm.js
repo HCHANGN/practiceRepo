@@ -1,11 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import TextError from "./TextError";
 
 const initialValues = {
     name:"",
     email:"",
-    channel:""
+    channel:"",
+    comments:"",
+    address:""
 };
 
 const onSubmit = values =>{
@@ -13,9 +16,9 @@ const onSubmit = values =>{
 };
 
 const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid email format").required("Required"),
-    channel: Yup.string().required("Required")
+    name: Yup.string().required("Required!"),
+    email: Yup.string().email("Invalid email format").required("Required!"),
+    channel: Yup.string().required("Required!")
 })
 
 const YoutubeForm = ()=>{
@@ -34,7 +37,7 @@ const YoutubeForm = ()=>{
                         id="name" 
                         name="name" 
                     />
-                    <ErrorMessage name="name"/>
+                    <ErrorMessage name="name" component={TextError}/>
                 </div>
 
                 <div className="form-control">
@@ -44,7 +47,17 @@ const YoutubeForm = ()=>{
                         id="email" 
                         name="email"  
                     />
-                    <ErrorMessage name="email"/>
+                    <ErrorMessage name="email">
+                        {
+                            (errorMsg)=>{
+                                return(
+                                    <div className="error">
+                                        {errorMsg}
+                                    </div>
+                                )
+                            }
+                        }
+                    </ErrorMessage>
                 </div>
 
                 <div className="form-control">
@@ -54,7 +67,30 @@ const YoutubeForm = ()=>{
                         id="channel" 
                         name="channel" 
                     />
-                    <ErrorMessage name="channel"/>
+                    <ErrorMessage name="channel" component="div"/>
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor="comments">Comments</label>
+                    <Field as="textarea" id="comments" name="comments"/>
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor="address">Address</label>
+                    <Field name="address">
+                        {
+                            (props)=>{
+                                const {field, form,meta} = props
+                                console.log("Render props:",props);
+                                return (
+                                    <div>
+                                        <input type="text" id="address" {...field}/>
+                                        {meta.touched && meta.error ? <div>{meta.error}</div>:null}
+                                    </div>
+                                )
+                            }
+                        }
+                    </Field>
                 </div>
 
                 <button type="submit">Submit</button>
