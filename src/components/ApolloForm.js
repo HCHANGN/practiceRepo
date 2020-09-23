@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {Formik, Form, Field, useField} from "formik";
 import * as Yup from "yup";
 
@@ -20,15 +20,26 @@ const setAutoHeight = (e)=>{
     e.target.style.minHeight = `${e.target.scrollHeight}px`;
 }
 
+const resetAutoHeight = (target)=>{
+    target.style.minHeight="auto";
+    target.style.minHeight = `41px`;
+}
+
 
 
 const ApolloForm = ()=>{
 
+    // const [submit,setSubmit] = useState(false);
+
     const textAreaRef = useRef("null");
 
-    useEffect(()=>{
-        console.log(textAreaRef);
-    },[])
+    // useEffect(()=>{
+    //     document.querySelector("#submitBtn").addEventListener("click",async ()=>{
+    //         await setSubmit(true);
+    //         setAutoHeight(textAreaRef.current);
+    //     });
+     
+    // },[])
 
     return (
         <div>
@@ -72,7 +83,7 @@ const ApolloForm = ()=>{
                                 }
                             </Field>
                             {/* <ErrorMessage name="address" component={TextError}></ErrorMessage> */}
-                            <button type="submit" id="submitBtn">確定</button>
+                            <button type="submit" id="submitBtn" onClick={()=>{resetAutoHeight(textAreaRef.current)}}>確定</button>
                             <button type="reset" id="cancelBtn">取消</button>
                         </Form>
                     </Formik>
